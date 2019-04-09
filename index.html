@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,11 +10,19 @@
 </head>
 <body>
 
-  Hello!
-  <br />My passion is designing, building and innovating things.
-  <br />Developer at Pickit by days and consultant by nights. 
-  <br />I believe understanding of design and communication is needed to be a great developer.
-  <br /><a href="mailto:hello@jacobjohansson.com">hello@jacobjohansson.com</a>
+  <main>
+    Hello!
+    <br />My passion is designing, building and innovating things.
+    <br />Developer at Pickit by days and consultant by nights. 
+    <br />I believe understanding of design and communication is needed to be a great developer.
+    <br /><a href="mailto:hello@jacobjohansson.com">hello@jacobjohansson.com</a>
+  </main>
   
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+
 </body>
 </html>
