@@ -1,0 +1,8 @@
+{
+  "short_name": "Jacob Johansson",
+  "name": "Jacob Johansson",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#6817d3",
+  "background_color": "#ffffff"
+}
