@@ -1,35 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Jacob Johansson</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Developer at Pickit by days and consultant by nights. I believe understanding of design and communication is part of the Full Stack Developer title." />
-  <link rel="manifest" href="/manifest.json">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="theme-color" content="#ffffff">
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='font/stylesheet.css'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <script src='main.js'></script>
 </head>
 <body>
 
-  <main>
-    Hello!
-    <br />My passion is designing, building and innovating things.
-    <br />Developer at Pickit by days and consultant by nights. 
-    <br />Code, communication and design are my strong sides.
-    <br /><a href="mailto:hello@jacobjohansson.com">hello@jacobjohansson.com</a>
-  </main>
-  
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
-  </script>
+  <div class="bg"></div>
+ 
+  <div class="text">
+    <p id="text1">Designing, building and innovating software.</p>
+    <p id="text2"><span id="text2a">Developer at </span><a href="https://pickit.com" style="color: #FF0091" border-color="#FF0091" id="text2b">Pickit</a><span id="text2c"> by days, consultant by nights.</span></p>
+    <p id="text3">Passion for coding, designing and communication.</p>
+    <a href="mailto:hello@jacobjohansson.com" border-color="#FFFFFF" id="text4">hello@jacobjohansson.com</a>
+  </div>
 
+
+  <script>
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+    function typeText(element, text){
+      return new Promise((resolve, reject) => {
+        let i = 0;
+        const typeLetter = () => {
+          const letters = text.split("");
+          i++;
+          const newString = letters.slice(0, i).join("");
+          element.classList.add("glitch");
+          element.innerText = newString;
+          element.setAttribute("data-text", newString);
+          const speed = getRandomInt(40, 100);
+          if(letters[i]){
+            setTimeout(typeLetter, speed);
+          } else {
+            resolve();
+            setTimeout(() => {
+              element.classList.remove("glitch");
+            }, 1500);
+          }
+        }
+        typeLetter();
+      });
+    }
+
+    (async () => {
+      document.getElementById("text1").innerText = "";
+      document.getElementById("text2a").innerText = "";
+      document.getElementById("text2b").innerText = "";
+      document.getElementById("text2c").innerText = "";
+      document.getElementById("text3").innerText = "";
+      document.getElementById("text4").innerText = "";
+      await typeText(document.getElementById("text1"), "Designing, building and innovating software.");
+      await typeText(document.getElementById("text2a"), "Developer at ");
+      await typeText(document.getElementById("text2b"), "Pickit");
+      await typeText(document.getElementById("text2c"), " by days, consultant by nights.");
+      await typeText(document.getElementById("text3"), "Passion for coding, designing and communication.");
+      await typeText(document.getElementById("text4"), "hello@jacobjohansson.com");
+    })();
+
+  </script>
+  
 </body>
 </html>
